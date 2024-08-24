@@ -14,18 +14,55 @@
 #### Пример успешного ответа:
 ```json
 {
-  "status": "success",
+  "status": "access",
   "result": [
     {
       "id": 1,
-      "name": "Activity 1"
+      "name": "Каньёнинг",
+      "locations": [
+        {
+          "id": 1,
+          "name": "Сочи",
+          "country": {
+            "id": 1,
+            "name": "Россия"
+          }
+        },
+        {
+          "id": 2,
+          "name": "Анталья",
+          "country": {
+            "id": 2,
+            "name": "Турция"
+          }
+        }
+      ]
     },
     {
       "id": 2,
-      "name": "Activity 2"
+      "name": "Сноубординг",
+      "locations": [
+        {
+          "id": 1,
+          "name": "Сочи",
+          "country": {
+            "id": 1,
+            "name": "Россия"
+          }
+        },
+        {
+          "id": 3,
+          "name": "Камчатка",
+          "country": {
+            "id": 1,
+            "name": "Россия"
+          }
+        }
+      ]
     }
   ]
 }
+
 ```
 
 ---
@@ -42,10 +79,28 @@
 #### Пример успешного ответа:
 ```json
 {
-  "status": "success",
+  "status": "access",
   "result": {
     "id": 1,
-    "name": "Activity 1"
+    "name": "Каньёнинг",
+    "locations": [
+      {
+        "id": 1,
+        "name": "Сочи",
+        "country": {
+          "id": 1,
+          "name": "Россия"
+        }
+      },
+      {
+        "id": 2,
+        "name": "Анталья",
+        "country": {
+          "id": 2,
+          "name": "Турция"
+        }
+      }
+    ]
   }
 }
 ```
@@ -64,15 +119,53 @@
 #### Пример успешного ответа:
 ```json
 {
-  "status": "success",
+  "status": "access",
   "result": [
     {
       "id": 1,
-      "name": "Location 1"
+      "name": "Сочи",
+      "country": {
+        "id": 1,
+        "name": "Россия"
+      },
+      "activities": [
+        {
+          "id": 1,
+          "name": "Каньёнинг"
+        },
+        {
+          "id": 2,
+          "name": "Сноубординг"
+        }
+      ]
     },
     {
       "id": 2,
-      "name": "Location 2"
+      "name": "Анталья",
+      "country": {
+        "id": 2,
+        "name": "Турция"
+      },
+      "activities": [
+        {
+          "id": 1,
+          "name": "Каньёнинг"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Камчатка",
+      "country": {
+        "id": 1,
+        "name": "Россия"
+      },
+      "activities": [
+        {
+          "id": 2,
+          "name": "Сноубординг"
+        }
+      ]
     }
   ]
 }
@@ -92,46 +185,26 @@
 #### Пример успешного ответа:
 ```json
 {
-  "status": "success",
+  "status": "access",
   "result": {
     "id": 1,
-    "name": "Location 1"
+    "name": "Сочи",
+    "country": {
+      "id": 1,
+      "name": "Россия"
+    },
+    "activities": [
+      {
+        "id": 1,
+        "name": "Каньёнинг"
+      },
+      {
+        "id": 2,
+        "name": "Сноубординг"
+      }
+    ]
   }
 }
 ```
 
 ---
-
-## Компоненты
-
-### ActivityItemResultSchema
-- **status** (string): Статус ответа
-- **result** (ActivitySchema | null): Данные активности или `null`
-
-### ActivityListResultSchemas
-- **status** (string): Статус ответа
-- **result** (array[ActivitySchema]): Список активностей
-
-### LocationItemResultSchema
-- **status** (string): Статус ответа
-- **result** (LocationSchema | null): Данные локации или `null`
-
-### LocationListResultSchemas
-- **status** (string): Статус ответа
-- **result** (array[LocationSchema]): Список локаций
-
-### ActivitySchema
-- **id** (integer): Идентификатор активности
-- **name** (string): Название активности
-
-### LocationSchema
-- **id** (integer): Идентификатор локации
-- **name** (string): Название локации
-
-### HTTPValidationError
-- **detail** (array[ValidationError]): Список ошибок валидации
-
-### ValidationError
-- **loc** (array[string]): Местоположение ошибки
-- **msg** (string): Сообщение об ошибке
-- **type** (string): Тип ошибки
